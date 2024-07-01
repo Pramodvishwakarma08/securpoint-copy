@@ -9,11 +9,11 @@ import 'no_internet/no_internet.dart';
 
 class ApiClient {
   //local
-  static const String mainUrl = "http://192.168.1.25:4003/";
+ // static const String mainUrl = "http://192.168.1.25:4003/";
 
 
   //live url
-  // static const String mainUrl = "http://3.222.163.144:4000/";
+   static const String mainUrl = "http://3.222.163.144:4000/";
 
   late Dio dio;
   late BaseOptions baseOptions;

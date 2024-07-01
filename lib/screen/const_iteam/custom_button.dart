@@ -58,7 +58,7 @@ class CustomPrimaryBtn1 extends StatelessWidget {
         // required this.validator,
         required this.isLoading,
         required this.onTap});
-  final Function()? onTap;
+        final Function()? onTap;
   // var validator;
   final String title;
   final bool isLoading;

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "278534940576",
+    "project_id": "securpoint-20d29",
+    "storage_bucket": "securpoint-20d29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278534940576:android:5b2d410398ade1a51826c5",
+        "android_client_info": {
+          "package_name": "com.example.securepoint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvKDbsLLXIpjYEO5cehqehRKcmR416d7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

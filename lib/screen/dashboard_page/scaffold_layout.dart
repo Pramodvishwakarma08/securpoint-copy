@@ -34,112 +34,101 @@ class _ScaffoldLayoutState extends State<ScaffoldLayout> {
       backgroundColor: Colors.white,
       appBar: widget.appBar,
       floatingActionButton : widget.showFloatingActionButton == true ? floatingActionButtonAddAssets() : null ,
-      body: SizedBox(
-        height: double.infinity,
-        child: Stack(
-          children : [
-            widget.body ?? Container(),
-            widget.showBottomAppBar == true ?
-            Positioned(
-              bottom: 0,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.06), // #000000 with 6% opacity
-                      offset: Offset(0, -4), // X: 0, Y: -4
-                      blurRadius: 4, // Blur radius: 4
-                      spreadRadius: 0, // Spread radius: 0
-                    ),
-                  ],
-                ),
-                height:Platform.isIOS ? 75.ah :  66.ah ,
-                width: MediaQuery.of(context).size.width,
-                child: Padding(
-                  padding:  EdgeInsets.only(bottom:Platform.isIOS ? 10.ah : 0.ah),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+      bottomNavigationBar:widget.showBottomAppBar == true ?   Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06), // #000000 with 6% opacity
+              offset: Offset(0, -4), // X: 0, Y: -4
+              blurRadius: 4, // Blur radius: 4
+              spreadRadius: 0, // Spread radius: 0
+            ),
+          ],
+        ),
+        height:Platform.isIOS ? 75.ah :  66.ah ,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding:  EdgeInsets.only(bottom:Platform.isIOS ? 10.ah : 0.ah),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(width: 92.aw,),
+              InkWell(
+                onTap: () {
+                  if(widget.activeIndex==1){
+                  }else{
+                    Get.offAll(()=> const HomeScreenNew(),transition: Transition.rightToLeft,);
+                  }
+                },
+                child: SizedBox(
+                  width: 65.aw,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(width: 92.aw,),
-                      InkWell(
-                        onTap: () {
-                          if(widget.activeIndex==1){
-                          }else{
-                            Get.offAll(()=> const HomeScreenNew());
-                          }
-                        },
-                        child: SizedBox(
-                          width: 65.aw,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CustomImageView(
-                                imagePath: "assets/image/home_icon.svg",
-                                height: 19.adaptSize,width: 17.adaptSize,
-                              ),
-                              const Text("Home",style: TextStyle(fontSize: 11,fontWeight:FontWeight.w400,color: Color(0xff333333)),)
-                            ],
-                          ),
-                        ),
+                      CustomImageView(
+                        imagePath: "assets/image/home_icon.svg",
+                        height: 19.adaptSize,width: 17.adaptSize,
                       ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {
-                          if(widget.activeIndex==2){
-
-                          }else{
-                            Get.offAll(()=>  MyAssetsScreen());
-                          }
-
-                        },
-                        child: SizedBox(
-                          width: 65.aw,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CustomImageView(
-                                imagePath: "assets/image/asset_icon.svg",
-                                height: 17.adaptSize,width: 16.adaptSize,
-                              ),
-                              const Text("Asset",style: TextStyle(fontSize: 11,fontWeight:FontWeight.w400,color: Color(0xff333333)),)
-                            ],
-                          ),
-                        ),
-                      ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {
-                          if(widget.activeIndex==3){
-
-                          }else{
-                            Get.offAll(()=> ChatsScreen(chatmodels: [],));
-                          }
-
-                        },
-                        child: SizedBox(
-                          width: 65.aw,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              CustomImageView(
-                                imagePath: "assets/image/msg_black_icon.svg",
-                                height: 15.adaptSize,width: 15.adaptSize,
-                              ),
-                              const Text("Messages",style: TextStyle(fontSize: 11,fontWeight:FontWeight.w400,color: Color(0xff333333)),)
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 92.aw,),
+                      const Text("Home",style: TextStyle(fontSize: 11,fontWeight:FontWeight.w400,color: Color(0xff333333)),)
                     ],
                   ),
                 ),
               ),
-            )  : Container(),
-          ]
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  if(widget.activeIndex==2){
+
+                  }else{
+                    Get.offAll(()=>  MyAssetsScreen(),transition: Transition.rightToLeft);
+                  }
+
+                },
+                child: SizedBox(
+                  width: 65.aw,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomImageView(
+                        imagePath: "assets/image/asset_icon.svg",
+                        height: 17.adaptSize,width: 16.adaptSize,
+                      ),
+                      const Text("Asset",style: TextStyle(fontSize: 11,fontWeight:FontWeight.w400,color: Color(0xff333333)),)
+                    ],
+                  ),
+                ),
+              ),
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  if(widget.activeIndex==3){
+
+                  }else{
+                    Get.offAll(()=> ChatsScreen(chatmodels: [],),transition: Transition.rightToLeft);
+                  }
+
+                },
+                child: SizedBox(
+                  width: 65.aw,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomImageView(
+                        imagePath: "assets/image/msg_black_icon.svg",
+                        height: 15.adaptSize,width: 15.adaptSize,
+                      ),
+                      const Text("Messages",style: TextStyle(fontSize: 11,fontWeight:FontWeight.w400,color: Color(0xff333333)),)
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(width: 92.aw,),
+            ],
+          ),
         ),
-      ),
+      ) : null,
+      body: widget.body ?? Container(),
     );
   }
 }

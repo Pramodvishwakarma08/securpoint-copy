@@ -171,6 +171,7 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                             title: 'Sign in',
                             isLoading: isLoading.value,
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               login();
                               // Get.to(EditAssets());
                               // Navigator.push(context, MaterialPageRoute(builder: (context) => EditAssets()));
@@ -184,7 +185,9 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                     const  Spacer(),
                     InkWell(
                       onTap:()  {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupWithEmailScreen() ));
+                        FocusScope.of(context).unfocus();
+                        Get.to(()=>SignupWithEmailScreen());
+                       // Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupWithEmailScreen() ));
                       },
                       child: Center(
                         child: RichText(

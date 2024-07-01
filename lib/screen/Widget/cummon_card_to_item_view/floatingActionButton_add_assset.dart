@@ -11,7 +11,7 @@ import '../../add_assets/add_assets.dart';
 
 Widget floatingActionButtonAddAssets({double ? padding}){
   return Padding(
-    padding:  EdgeInsets.only(bottom: Platform.isIOS ? 30.0.ah : 60.ah),
+    padding:  EdgeInsets.only(bottom: Platform.isIOS ? 30.0.ah : 0.ah),
     child: InkWell(
       onTap: () {
         Get.to(()=>const AddAssetsScreen());

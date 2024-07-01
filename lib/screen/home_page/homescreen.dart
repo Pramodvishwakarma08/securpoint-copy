@@ -28,9 +28,6 @@ class HomeScreenNew extends StatefulWidget {
 class _HomeScreenNewState extends State<HomeScreenNew> {
 
 
-
-
-
   HomeScreenController homeScreenController = Get.put(HomeScreenController());
 
   @override

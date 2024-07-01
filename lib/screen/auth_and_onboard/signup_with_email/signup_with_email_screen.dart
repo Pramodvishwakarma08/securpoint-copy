@@ -374,6 +374,7 @@ class _SignupWithEmailScreenState extends State<SignupWithEmailScreen> {
                   ()=> CustomPrimaryBtn(
                 title: 'Send OTP', isLoading: isLoading.value,
                 onTap: () {
+                  FocusScope.of(context).unfocus();
                   if(valuesecond){
                     if(isEmail){
                       print("object");
