@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
 
   //lock == 1
   //unlock == 0
+  //unlock == 0
+  //unlock == 0
+  //unlock == 0
+  //unlock == 0
  // lockAndUnlock: lockUnlock == "Lock" ? "0" : '1',
 
 
