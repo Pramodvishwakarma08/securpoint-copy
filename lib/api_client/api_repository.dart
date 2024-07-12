@@ -14,6 +14,7 @@ import '../screen/featured_assest_and_all_assets/AllAssetsModel.dart';
 import '../screen/home_page/HomePageModel.dart';
 import '../screen/my_assets_screen/my_assets_model.dart';
 import '../screen/premium_plan/PremiumPlanModel.dart';
+import '../screen/premium_plan/PurchasePlanModel.dart';
 import '../screen/saved_assets/GetFavouriteAssetsModel.dart';
 import 'api_client.dart';
 
@@ -538,6 +539,21 @@ class ApiRepository {
   }
 
 
+
+  static Future<PurchasePlanModel> purchasePlan({required String id}) async {
+    var data = {
+      'planId': '$id'
+    };
+    final response = await ApiClient().postRequest(
+        endPoint: "user/payment/purchasePlan",body: data
+    );
+    try {
+      return PurchasePlanModel.fromJson(response);
+    } catch (e, log) {
+      print(e.toString());
+      return PurchasePlanModel.fromJson(response);
+    }
+  }
 
 
 

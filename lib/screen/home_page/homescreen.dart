@@ -8,6 +8,8 @@ import 'package:securepoint/screen/Widget/custom_image_view.dart';
 import 'package:securepoint/screen/dashboard_page/scaffold_layout.dart';
 import 'package:securepoint/screen/home_page/home_screen_controller.dart';
 import 'package:securepoint/core/constants/size.dart';
+import 'package:share_plus/share_plus.dart';
+import '../Widget/bottom_sheet_widgets.dart';
 import '../Widget/search_textfield_widget.dart';
 import '../all_categories/all_category_screen.dart';
 import '../drawer_screen/drawer_screen.dart';
@@ -29,6 +31,7 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
 
 
   HomeScreenController homeScreenController = Get.put(HomeScreenController());
+  ShareController shareControllernotuse = Get.put(ShareController(),permanent: true);
 
   @override
   void initState() {
@@ -75,6 +78,19 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
             child: Column(
               children: [
                 SizedBox(height: 20.ah),
+                // Use Builder to get the widget context
+                ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await Share.share("pramid");
+                    } catch (e) {
+                      print("Error: $e");
+                    }
+                  },
+                  child: const Text('Share'),
+                ),
+
+
                 Center(
                     child: SvgPicture.asset(
                       'assets/icon/ic_security_24px.svg',

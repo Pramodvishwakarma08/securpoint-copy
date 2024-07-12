@@ -80,11 +80,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
   }
 
   Widget customCard(int index) {
-    int indexxx =
-        "${controller.chatsModel.chats![index].participants![0].id}" ==
-                PrefUtils().getUserId()
-            ? 1
-            : 0;
+    int indexxx = "${controller.chatsModel.chats![index].participants![0].id}" == PrefUtils().getUserId() ? 1 : 0;
 
     return InkWell(
       onTap: () {

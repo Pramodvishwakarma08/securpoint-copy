@@ -12,6 +12,7 @@ import 'package:securepoint/screen/dashboard_page/scaffold_layout.dart';
 import '../../core/utils/bottomSheetWidget.dart';
 import '../../core/utils/date_time_utils.dart';
 import '../../model/assets_model.dart';
+import '../Widget/bottom_sheet_widgets.dart';
 import '../Widget/carousel_demo/carousel_slider.dart';
 import '../auth_and_onboard/user_profile/user_profile_screen.dart';
 import '../map_screen/user_map_screen.dart';
@@ -37,9 +38,6 @@ class _AssetDetailsScreenState extends State<AssetDetailsScreen> {
     controller.getRelaredAssets("${widget.assetDetailsModel.categoryId}");
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return ScaffoldLayout(
@@ -63,39 +61,43 @@ class _AssetDetailsScreenState extends State<AssetDetailsScreen> {
         actions: [
           isSave == false
               ? InkWell(
-                  onTap: () async {
-                    print("line72${isSave}");
-                    isSave = true;
-                    await ApiRepository.addToFavourite(
-                        assetId: "${widget.assetDetailsModel.id}");
-                    setState(() {});
-                    print("line76${isSave}");
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomImageView(
-                      imagePath: "assets/image/save_icon_unfill.svg",
-                    ),
-                  ),
-                )
+            onTap: () async {
+              print("line72${isSave}");
+              isSave = true;
+              await ApiRepository.addToFavourite(
+                  assetId: "${widget.assetDetailsModel.id}");
+              setState(() {});
+              print("line76${isSave}");
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomImageView(
+                imagePath: "assets/image/save_icon_unfill.svg",
+              ),
+            ),
+          )
               : InkWell(
-                  onTap: () async {
-                    isSave = false;
-                    await ApiRepository.addToFavourite(
-                        assetId: "${widget.assetDetailsModel.id}");
-                    setState(() {});
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomImageView(
-                      imagePath: "assets/image/save_fill.svg",
-                    ),
-                  ),
-                ),
+            onTap: () async {
+              isSave = false;
+              await ApiRepository.addToFavourite(
+                  assetId: "${widget.assetDetailsModel.id}");
+              setState(() {});
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomImageView(
+                imagePath: "assets/image/save_fill.svg",
+              ),
+            ),
+          ),
           SizedBox(width: 4.aw),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.share, size: 20, color: Color(0xFF6A6A6A)),
+            child: InkWell(
+                onTap: () {
+                  CustomBottomSheets.shareBottomSheet(context: context,userName:"sdfsdsdd");
+                },
+                child: Icon(Icons.share, size: 20, color: Color(0xFF6A6A6A))),
           ),
           SizedBox(width: 20.aw),
         ],
@@ -171,8 +173,8 @@ class _AssetDetailsScreenState extends State<AssetDetailsScreen> {
                     InkWell(
                       onTap: () {
                         Get.to(() => UserProfileScreen(
-                              userID: '${widget.assetDetailsModel.userId}',
-                            ));
+                          userID: '${widget.assetDetailsModel.userId}',
+                        ));
                       },
                       child: Container(
                         width: 96.aw,
@@ -213,25 +215,25 @@ class _AssetDetailsScreenState extends State<AssetDetailsScreen> {
                   children: [
                     widget.assetDetailsModel.lock == 0
                         ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                                SvgPicture.asset(
-                                  'assets/icon/icon _warning_.svg',
-                                  height: 15.ah,
-                                  width: 16.aw,
-                                  fit: BoxFit.fill,
-                                ),
-                                SizedBox(width: 5.aw),
-                                Text(
-                                  'This asset is not available!',
-                                  style: TextStyle(
-                                      fontFamily: 'Roboto',
-                                      color: const Color(0xFFBD3124),
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 11.fSize),
-                                ),
-                              ])
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icon/icon _warning_.svg',
+                            height: 15.ah,
+                            width: 16.aw,
+                            fit: BoxFit.fill,
+                          ),
+                          SizedBox(width: 5.aw),
+                          Text(
+                            'This asset is not available!',
+                            style: TextStyle(
+                                fontFamily: 'Roboto',
+                                color: const Color(0xFFBD3124),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 11.fSize),
+                          ),
+                        ])
                         : Container(),
                     InkWell(
                       onTap: () {
@@ -315,7 +317,7 @@ class _AssetDetailsScreenState extends State<AssetDetailsScreen> {
             ),
           ),
           Obx(
-              ()=>controller.isLoading.value ? Center(child: CircularProgressIndicator(strokeWidth: 2,),) :  Padding(
+                ()=>controller.isLoading.value ? Center(child: CircularProgressIndicator(strokeWidth: 2,),) :  Padding(
               padding: EdgeInsets.only(left: 20.aw, right: 0.h),
               child: SizedBox(
                 height: 250.ah,

@@ -70,6 +70,7 @@ dependencies:
   emoji_picker_flutter: ^2.2.0
 
   firebase_core :
+  share_plus:
 
 
 
